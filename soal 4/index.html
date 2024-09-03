@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambar dan Opasitas</title>
+    <style>
+        #image-container {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin: 20px;
+        }
+        .image {
+            max-width: 45%;
+            height: auto;
+            transition: opacity 0.5s ease;
+        }
+        .form-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-group button {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="left-image" class="image" src="img/gunung pancar.jpg" alt="Gambar Kiri">
+        <img id="right-image" class="image" src="img/kebunraya.jpg" alt="Gambar Kanan">
+    </div>
+
+    <div class="form-container">
+        <form id="imgForm">
+            <label for="leftImgSelect">Pilih Gambar Kiri:</label>
+            <select id="leftImgSelect">
+                <option value="img/gunung pancar.jpg">Gambar 1</option>
+                <option value="img/gunung pancar.jpeg">Gambar 2</option>
+                <option value="img/gunung pancar.jpeg">Gambar 3</option>
+            </select>
+
+            <label for="opacitySelect">Pilih Opasitas:</label>
+            <select id="opacitySelect">
+                <option value="1">100%</option>
+                <option value="0.5">50%</option>
+                <option value="0.2">20%</option>
+            </select>
+
+            <label for="rightImgSelect">Pilih Gambar Kanan:</label>
+            <select id="rightImgSelect">
+                <option value="img/kebunraya.jpg">Gambar 1</option>
+                <option value="img/kebunraya.jpeg">Gambar 2</option>
+                <option value="img/kebunraya.jpeg">Gambar 3</option>
+            </select>
+        </form>
+
+        <div class="button-group">
+            <button type="button" onclick="updateLeftImage()">Kirim Kiri</button>
+            <button type="button" onclick="updateRightImage()">Kirim Kanan</button>
+        </div>
+    </div>
+
+    <script>
+        function updateLeftImage() {
+            var leftImage = document.getElementById('left-image');
+            var leftImageSelect = document.getElementById('leftImgSelect').value;
+            var opacitySelect = document.getElementById('opacitySelect').value;
+
+            leftImage.src = leftImageSelect;
+            leftImage.style.opacity = opacitySelect;
+        }
+
+        function updateRightImage() {
+            var rightImage = document.getElementById('right-image');
+            var rightImageSelect = document.getElementById('rightImgSelect').value;
+            var opacitySelect = document.getElementById('opacitySelect').value;
+
+            rightImage.src = rightImageSelect;
+            rightImage.style.opacity = opacitySelect;
+        }
+    </script>
+</body>
+</html>

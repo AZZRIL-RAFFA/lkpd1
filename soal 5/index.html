@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Mundur Alert</title>
+    <style>
+        #alertBox {
+            display: none;
+            background-color: #f44336; 
+            color: white;
+            padding: 15px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #showAlertButton {
+            background-color: #4CAF50; 
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="alertBox">Danger! Alert akan tertutup dalam <span id="countdown">5</span></div>
+    
+    <button id="showAlertButton" onclick="showAlert()">Munculkan Alert</button>
+
+    <script>
+        function showAlert() {
+            //adalah sebuah fungsi yang akan dijalankan ketika dipanggil. 
+            //Fungsi ini tidak memiliki parameter, sehingga tidak memerlukan inputan dari luar.
+            var countdownElement = document.getElementById("countdown");
+            //Dua variabel ini dideklarasikan untuk menyimpan referensi ke elemen HTML yang memiliki id "countdown" dan "alertBox". 
+            //document.getElementById() adalah metode yang digunakan untuk mencari elemen HTML berdasarkan id-nya.
+            var alertBox = document.getElementById("alertBox");
+            var count = 5;
+            //Variabel count dideklarasikan dengan nilai awal 5. Variabel ini akan digunakan sebagai penghitung mundur.
+
+            alertBox.style.display = "block";
+            //Baris kode ini mengatur properti display dari elemen alertBox menjadi "block". Artinya, elemen alertBox akan ditampilkan.
+
+            var interval = setInterval(function() {
+                //ini untuk memulai waktu
+                countdownElement.textContent = count;
+                count--;
+
+                if (count < 0) {
+                    clearInterval(interval);
+                    alertBox.style.display = "none";
+                }
+            }, 1000); 
+        }
+    </script>
+
+</body>
+</html>

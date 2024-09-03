@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tabel</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="donationForm">
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>Keterangan</th>
+                <th>Bersedia Membayar:</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>Bersedia Membayar Dana Sumbangan Pembangunan (DSP) Sebesar Rp 8.500.000 Dengan mekanisme
+                    pembayaran Dana Sumbangan Pendidikan</td>
+                <td>
+                    <input type="radio" name="paymentOption1" value="Lunas Daftar Ulang">
+                    <label for="daftar">Lunas Daftar Ulang</label><br>
+                    <input type="radio" name="paymentOption1" value="60% dibayarkan saat daftar ulang dan sisanya dibayarkan paling lambat tanggal 13 Juli 2024">
+                    <label for="daftar">60% dibayarkan saat daftar ulang dan sisanya dibayarkan paling lambat tanggal 13 Juli 2024</label>
+                </td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Bersedia Membayar Dana Sumbangan Penyelenggaran Pendidikan (SPP) secara rutin setiap bulan sebesar Rp
+                    550.000 yang di bayarkan sebelum tanggal 10 setiap bulannya kecuali bulan Juli 2024</td>
+                <td>
+                    <input type="checkbox" name="spp">
+                </td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>
+                    <b>Bayaran lainnya. </b> <br>
+                    Setelah Putra/Putri kami diterima di SMK Wikrama Bogor. Kami juga bersedia memberikan
+                    <br>
+                    <br>
+                    a. Wakaf pembangunan Mesjid Al-Ikram
+                </td>
+                <td> 
+                    <input type="radio" name="wakaf" value="300000">
+                    <label for="Rp">Rp 300.000</label><br>
+                    <input type="radio" name="wakaf" value="500000">
+                    <label for="Rp">Rp 500.000</label><br>
+                    <input type="radio" name="wakaf" value="1000000">
+                    <label for="Rp">Rp 1.000.000</label><br>
+                    <input type="radio" name="wakaf" value="2000000">
+                    <label for="Rp">Rp 2.000.000</label><br>
+                    <input type="radio" name="wakaf" value="5000000">
+                    <label for="Rp">Rp 5.000.000</label><br>
+                    <input type="radio" name="wakaf" value="5000000">
+                    <label for="Rp">> Rp 5.000.000 atau Rp</label>
+                    <input type="submit" value="Kirim Cuyy">
+                    
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>b. Zakat infaq dan Sodaqoh secara rutin setiap bulan:</td>
+                <td><input type="text" name="zakatInfaqSodaqoh" placeholder="Masukkan jumlah"></td>
+            </tr>
+        </table> 
+    </form>
+
+    <div id="result" class="results"></div>
+
+    <script>
+        document.getElementById('donationForm').addEventListener('submit', function(event) {
+            //Menambahkan event listener untuk menangani event submit pada elemen formulir dengan ID donationForm.
+            event.preventDefault();
+            
+            //Mencegah perilaku default formulir, yaitu mengirimkan data ke server dan memuat ulang halaman.
+
+            const formData = new FormData(this);
+            //Membuat objek FormData yang berisi data dari formulir yang sedang diproses.
+            let resultHtml = '<h2>Formulir Pengiriman:</h2><ul>';
+                //Memulai string HTML untuk menampilkan hasil.
+
+            for (const [key, value] of formData.entries()) {
+                if (value) {
+                    resultHtml += `<li><strong>${key}:</strong> ${value}</li>`;
+                    //Iterasi melalui pasangan key-value dari data formulir. Jika nilai tidak kosong,
+                    // menambahkan item list HTML untuk setiap pasangan.
+                }
+            }
+            resultHtml += '</ul>';
+
+            document.getElementById('result').innerHTML = resultHtml;
+            //Mengupdate elemen dengan ID result untuk menampilkan hasil HTML yang telah disusun.
+        });
+    </script>
+</body>
+</html>

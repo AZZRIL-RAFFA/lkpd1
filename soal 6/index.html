@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pencarian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Form Pencarian</h1>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Masukkan teks pencarian" required>
+            <input type="submit" value="Cari">
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            // //document.getElementById('searchForm'): Ini adalah kode yang digunakan untuk
+            // mendapatkan referensi ke elemen HTML dengan id searchForm menggunakan metode getElementById.
+            //addEventListener('submit', function(event) { ... }): Ini adalah kode yang digunakan untuk menambahkan event listener ke elemen searchForm. Event listener ini akan mendengarkan event submit, 
+            //yang dipicu ketika form dikirimkan (misalnya, ketika pengguna mengklik tombol submit).
+            event.preventDefault(); 
+            //function(event) { ... }: Ini adalah fungsi anonim yang akan dipanggil ketika event submit dipicu. 
+            //Fungsi ini memiliki parameter event, yang mewakili event yang memicu fungsi tersebut.
+           
+          
+            const searchText = document.getElementById('searchInput').value;
+            //document.getElementById('searchInput'): Ini adalah kode yang digunakan untuk mendapatkan referensi 
+            //ke elemen HTML dengan id searchInput menggunakan metode getElementById.
+            //const searchText = ...: Ini adalah kode yang digunakan untuk mengassign 
+            //nilai dari elemen searchInput ke variabel konstan searchText.
+          
+            document.getElementById('result').innerText = `Hasil pencarian: ${searchText}`;
+        });
+    </script>
+</body>
+</html>
